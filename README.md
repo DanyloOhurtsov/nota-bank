@@ -88,6 +88,7 @@ When contributing to this project, please adhere to the following commit values 
 - **build**: Commits that affect build components, such as the build tool, CI pipeline, dependencies, project version
 - **ops**: Commits that affect operational components, such as infrastructure, deployment, backup, recovery
 - **test**: Commits that add missing tests or fix existing tests
+- **init**: Initial commit
 
 ## License
 
