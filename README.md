@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Web Banking Application
 
-## Getting Started
+Welcome to the Web Banking Application project! This README file will guide you through the setup, usage, and features of our online banking platform. Whether you are a developer looking to contribute or a user interested in understanding the application, you'll find all the information you need here.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Introduction](#introduction)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Contributors](#contributors)
+- [Commit Values](#commit-values)
+- [License](#license)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Web Banking Application is a secure and user-friendly online banking platform designed to provide users with convenient access to their financial accounts. With a focus on security and ease of use, our application allows users to manage their finances, view transaction history, transfer funds, and much more.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- **Account Management**: View account balances and details.
+- **Transaction History**: Access and filter past transactions.
+- **Funds Transfer**: Transfer money between accounts securely.
+- **Bill Payments**: Pay bills directly from your account.
+- **User Authentication**: Secure login and multi-factor authentication.
+- **Customer Support**: Integrated support for user queries.
 
-To learn more about Next.js, take a look at the following resources:
+## Dependencies
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Web Banking Application relies on the following technologies:
+- **Next.js**: React framework for server-side rendering
+- **TypeScript**: Typed JavaScript for scalable and robust applications
+- **Appwrite**: Backend server for authentication, database, storage, and more
+- **Plaid**: API for connecting to users' bank accounts
+- **Dwolla**: API for ACH payments and money transfers
+- **React Hook Form**: Library for managing form state
+- **Zod**: TypeScript-first schema declaration and validation library
+- **TailwindCSS**: Utility-first CSS framework for styling
+- **Chart.js**: Library for creating interactive charts
+- **ShadCN**: Design system and component library
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Installation
 
-## Deploy on Vercel
+To get started with the Web Banking Application, follow these steps:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the Repository**
+    ```bash
+    git clone https://github.com/DanyloOhurtsov/unknown-bank
+    cd unknown-bank
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3. **Set Up Environment Variables**
+    Create a `.env` file in the root directory and add the necessary environment variables:
+    ```
+    DB_HOST=your_database_host
+    DB_USER=your_database_user
+    DB_PASS=your_database_password
+    JWT_SECRET=your_jwt_secret
+    ```
+
+4. **Run the Application**
+    ```bash
+    npm start
+    ```
+
+## Contributors
+
+We welcome contributions from the community! If you'd like to contribute, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
+
+- **Your Name** - Initial Work - [yourusername](https://github.com/yourusername)
+
+## Commit Values
+
+When contributing to this project, please adhere to the following commit values to maintain a clear and consistent history:
+
+- **fix**: A commit that fixes an error
+- **feat**: Commits that add a new feature
+- **docs**: Commits that affect only the documentation
+- **style**: Commits that do not affect the content (whitespace, formatting, missing commas, etc.)
+- **chore**: Miscellaneous commits, e.g., changing .gitignore
+- **perf**: Special refactor commits that improve performance
+- **refactor**: Commits that rewrite/restructure your code, but do not change any behavior
+- **build**: Commits that affect build components, such as the build tool, CI pipeline, dependencies, project version
+- **ops**: Commits that affect operational components, such as infrastructure, deployment, backup, recovery
+- **test**: Commits that add missing tests or fix existing tests
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/DanyloOhurtsov/unknown-bank/blob/main/LICENSE.txt) file for details.
+
+Thank you for using the Web Banking Application! If you have any questions or feedback, please feel free to reach out.
