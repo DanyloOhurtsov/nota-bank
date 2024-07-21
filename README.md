@@ -81,7 +81,7 @@ When contributing to this project, please adhere to the following commit values 
 - **fix**: A commit that fixes an error
 - **feat**: Commits that add a new feature
 - **docs**: Commits that affect only the documentation
-- **style**: Commits that do not affect the content (whitespace, formatting, missing commas, etc.)
+- **style**: Commits that affect the content (whitespace, formatting, missing commas, etc.)
 - **chore**: Miscellaneous commits, e.g., changing .gitignore
 - **perf**: Special refactor commits that improve performance
 - **refactor**: Commits that rewrite/restructure your code, but do not change any behavior
@@ -92,6 +92,6 @@ When contributing to this project, please adhere to the following commit values 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/DanyloOhurtsov/unknown-bank/blob/main/LICENSE.txt) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/DanyloOhurtsov/nota-bank/blob/master/LICENSE.txt) file for details.
 
 Thank you for using the Web Banking Application! If you have any questions or feedback, please feel free to reach out.
