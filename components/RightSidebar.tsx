@@ -11,13 +11,11 @@ const RightSidebar = ({ user, transactions, banks }: RightSidebarProps) => {
                 <div className="profile">
                     <div className="profile-img">
                         <span className="text-5xl font-bold text-blue-500">
-                            {user.firstName[0]}
+                            {user.name[0]}
                         </span>
                     </div>
                     <div className="profile-details">
-                        <p className="profile-name">
-                            {user.firstName} &{user.lastName}
-                        </p>
+                        <p className="profile-name">{user.name}</p>
                         <p className="profile-email">{user.email}</p>
                     </div>
                 </div>
