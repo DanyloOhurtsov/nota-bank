@@ -14,7 +14,7 @@ const BankCard = ({
                 <div className="bank-card_content">
                     <div>
                         <p className="text-16 font-semibold text-white">
-                            {account.name || userName}
+                            {userName}
                         </p>
                         <p className="font-ibm-plex-serif font-black text-white">
                             <AnimatedCounter amount={account.currentBalance} />
@@ -31,8 +31,7 @@ const BankCard = ({
                             </p>
                         </div>
                         <p className="text-14 font-semibold tracking-[1.1px] text-white">
-                            ●●●● ●●●● ●●●● {" "}
-                            <span className="text-16">1234</span>
+                            ●●●● ●●●● ●●●● <span className="text-16">1234</span>
                         </p>
                     </article>
                 </div>
