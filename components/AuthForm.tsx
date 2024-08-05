@@ -4,6 +4,7 @@ import { z } from "zod";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import PlaidLink from "./PlaidLink";
 import { Loader2 } from "lucide-react";
 import CustomInput from "./CustomInput";
 import { authInputs } from "@/constants";
@@ -13,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { authFormSchema } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signUp, signIn, getLoggedInUser } from "@/lib/actions/user.actions";
+import { signUp, signIn } from "@/lib/actions/user.actions";
 
 const AuthForm = ({ type }: AuthFormProps) => {
     const router = useRouter();
@@ -106,11 +107,11 @@ const AuthForm = ({ type }: AuthFormProps) => {
                 </div>
             </header>
 
-            {user ? (
+            {/* {user ? ( */}
                 <div className="flex flex-col gap-4">
-                    {/* Render specific content when user is present */}
+                    <PlaidLink user={user} variant="primary" />
                 </div>
-            ) : (
+            {/* ) : ( */}
                 <Form {...form}>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
@@ -237,7 +238,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
                         </Link>
                     </footer>
                 </Form>
-            )}
+            {/* )} */}
         </section>
     );
 };
