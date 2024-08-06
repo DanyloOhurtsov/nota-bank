@@ -197,16 +197,19 @@ const AuthForm = ({ type }: AuthFormProps) => {
                             </>
                         )}
 
-                        {authInputs.map((input) => (
-                            <CustomInput
-                                key={input.id}
-                                name={input.name}
-                                control={control}
-                                label={input.label}
-                                placeholder={input.placeholder}
-                                id={input.id}
-                            />
-                        ))}
+                        {authInputs.map((input) => {
+                            console.log(input);
+                            return (
+                                <CustomInput
+                                    key={input.id}
+                                    name={input.name}
+                                    control={control}
+                                    label={input.label}
+                                    placeholder={input.placeholder}
+                                    id={input.id}
+                                />
+                            );
+                        })}
 
                         <div className="flex flex-col gap-4">
                             <Button

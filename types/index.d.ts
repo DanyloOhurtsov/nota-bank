@@ -332,9 +332,8 @@ declare interface AuthFormProps {
     type: "sign-in" | "sign-up";
 }
 
-
-declare interface CustomInputProps{
-    name: string;
+declare interface CustomInputProps {
+    name: "email" | "password";
     label: string;
     placeholder: string;
     id: string;
