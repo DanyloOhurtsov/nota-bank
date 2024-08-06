@@ -1,6 +1,6 @@
 "use server";
 
-import { ID } from "node-appwrite";
+import { ID, Query } from "node-appwrite";
 import { cookies } from "next/headers";
 import { plaidClient } from "@/lib/plaid";
 import { consoleLog } from "@/lib/consoleLog";
@@ -20,15 +20,40 @@ const {
     APPWRITE_BANK_COLLECTION_ID: BANK_COLLECTION_ID,
 } = process.env;
 
+export const getUserInfo = async ({ userId }: getUserInfoProps) => {
+    try {
+        const { database } = await createAdminClient();
+
+        const user = await database.listDocuments(
+            DATABASE_ID!,
+            USER_COLLECTION_ID!,
+            [Query.equal("userId", [userId])]
+        );
+
+        return parseStringify(user.documents[0]);
+    } catch (error) {
+        consoleLog({ type: "error", message: error, label: "getUserInfo" });
+    }
+};
 export const signIn = async ({ email, password }: signInProps) => {
     try {
         const { account } = await createAdminClient();
-        const response = await account.createEmailPasswordSession(
+
+        const session = await account.createEmailPasswordSession(
             email,
             password
         );
 
-        return parseStringify(response);
+        cookies().set("nota-bank-session", session.secret, {
+            path: "/",
+            httpOnly: true,
+            sameSite: "strict",
+            secure: true,
+        });
+
+        const user = await getUserInfo({ userId: session.userId });
+
+        return parseStringify(user);
     } catch (error) {
         consoleLog({ type: "error", message: error, label: "signIn" });
     }
@@ -94,8 +119,9 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
 export const getLoggedInUser = async () => {
     try {
         const { account } = await createSessionClient();
+        const result = await account.get();
 
-        const user = await account.get();
+        const user = await getUserInfo({ userId: result.$id });
 
         return parseStringify(user);
     } catch (error) {
@@ -222,5 +248,37 @@ export const exchangePublicToken = async ({
             message: error,
             label: "exchangePublicToken",
         });
+    }
+};
+
+export const getBanks = async ({ userId }: getBanksProps) => {
+    try {
+        const { database } = await createAdminClient();
+
+        const test = await database.listDocuments(
+            DATABASE_ID!,
+            BANK_COLLECTION_ID!,
+            [Query.equal("userId", [userId])]
+        );
+
+        return parseStringify(test.documents);
+    } catch (error) {
+        consoleLog({ type: "error", message: error, label: "Get Banks" });
+    }
+};
+
+export const getBank = async ({ documentId }: getBankProps) => {
+    try {
+        const { database } = await createAdminClient();
+
+        const bank = await database.listDocuments(
+            DATABASE_ID!,
+            BANK_COLLECTION_ID!,
+            [Query.equal("$id", [documentId])]
+        );
+
+        return parseStringify(bank.documents[0]);
+    } catch (error) {
+        consoleLog({ type: "error", message: error, label: "Get Bank" });
     }
 };
