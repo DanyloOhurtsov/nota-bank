@@ -41,7 +41,6 @@ const Home = async ({ searchParams: { id, page } }: SearchParamProps) => {
                     appwriteItemId={appwriteItemId}
                     page={currentPage}
                 />
-                <TransactionsTable transactions={account.transactions} />
             </div>
 
             {/* User and Banks information */}
