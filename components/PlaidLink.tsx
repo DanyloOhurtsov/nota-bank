@@ -10,6 +10,7 @@ import {
     PlaidLinkOnSuccess,
     usePlaidLink,
 } from "react-plaid-link";
+import Image from "next/image";
 
 const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
     const router = useRouter();
@@ -53,9 +54,33 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
                     Connect Bank
                 </Button>
             ) : variant === "ghost" ? (
-                <Button>Connect Bank</Button>
+                <Button
+                    variant={"ghost"}
+                    className="plaidlink-ghost"
+                    onClick={() => open()}
+                >
+                    <Image
+                        src={"/icons/connect-bank.svg"}
+                        alt="connectBank"
+                        width={24}
+                        height={24}
+                    />
+                    <p className="text-16 font-semibold text-black-2 xl:block">
+                        Connect Bank
+                    </p>
+                </Button>
             ) : (
-                <Button>Connect Bank</Button>
+                <Button className="plaidlink-default" onClick={() => open()}>
+                    <Image
+                        src={"/icons/connect-bank.svg"}
+                        alt="connectBank"
+                        width={24}
+                        height={24}
+                    />
+                    <p className="text-16 font-semibold text-black-2">
+                        Connect Bank
+                    </p>
+                </Button>
             )}
         </>
     );
