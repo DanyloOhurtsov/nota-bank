@@ -6,6 +6,7 @@ import React from "react";
 
 const MyBanks = async () => {
     const loggedIn = await getLoggedInUser();
+    if (!loggedIn) return;
     const accounts = await getAccounts({ userId: loggedIn.$id });
 
     return (
@@ -26,7 +27,7 @@ const MyBanks = async () => {
                                     account={account}
                                     userName={`${loggedIn.firstName} ${loggedIn.lastName}`}
                                 />
-                            ))} 
+                            ))}
                     </div>
                 </div>
             </div>
