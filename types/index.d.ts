@@ -333,3 +333,9 @@ declare interface AuthFormProps {
 }
 
 
+declare interface CustomInputProps{
+    name: string;
+    label: string;
+    placeholder: string;
+    id: string;
+}
