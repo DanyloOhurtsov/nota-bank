@@ -15,6 +15,8 @@ import { parseStringify } from "../utils";
 import { getTransactionsByBankId } from "./transaction.actions";
 import { getBanks, getBank } from "./user.actions";
 
+const { PLAID_ACCESS_TOKEN, PLAID_ACCOUNT_ID, PLAID_FUNDING_ID } = process.env;
+
 // Get multiple bank accounts
 export const getAccounts = async ({ userId }: getAccountsProps) => {
     try {
@@ -72,7 +74,6 @@ export const getAccounts = async ({ userId }: getAccountsProps) => {
 
 // Get one bank account
 export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
-
     try {
         // get bank from db
         const bank = await getBank({ documentId: appwriteItemId });
@@ -191,9 +192,9 @@ export const getTransactions = async ({
 // Create Transfer
 export const createTransfer = async () => {
     const transferAuthRequest: TransferAuthorizationCreateRequest = {
-        access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-        account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
-        funding_account_id: "442d857f-fe69-4de2-a550-0c19dc4af467",
+        access_token: PLAID_ACCESS_TOKEN!,
+        account_id: PLAID_ACCOUNT_ID!,
+        funding_account_id: PLAID_FUNDING_ID!,
         type: "credit" as TransferType,
         network: "ach" as TransferNetwork,
         amount: "10.00",
@@ -208,8 +209,8 @@ export const createTransfer = async () => {
         const authorizationId = transferAuthResponse.data.authorization.id;
 
         const transferCreateRequest: TransferCreateRequest = {
-            access_token: "access-sandbox-cddd20c1-5ba8-4193-89f9-3a0b91034c25",
-            account_id: "Zl8GWV1jqdTgjoKnxQn1HBxxVBanm5FxZpnQk",
+            access_token: PLAID_ACCESS_TOKEN!,
+            account_id: PLAID_ACCOUNT_ID!,
             description: "payment",
             authorization_id: authorizationId,
         };
