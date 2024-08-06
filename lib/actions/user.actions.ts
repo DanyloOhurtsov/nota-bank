@@ -282,3 +282,23 @@ export const getBank = async ({ documentId }: getBankProps) => {
         consoleLog({ type: "error", message: error, label: "Get Bank" });
     }
 };
+
+export const getBankByAccountId = async ({
+    accountId,
+}: getBankByAccountIdProps) => {
+    try {
+        const { database } = await createAdminClient();
+
+        const bank = await database.listDocuments(
+            DATABASE_ID!,
+            BANK_COLLECTION_ID!,
+            [Query.equal("accountId", [accountId])]
+        );
+
+        console.log(bank);
+
+        return parseStringify(bank.documents[0]);
+    } catch (error) {
+        consoleLog({ type: "error", message: error, label: "Get Bank" });
+    }
+};

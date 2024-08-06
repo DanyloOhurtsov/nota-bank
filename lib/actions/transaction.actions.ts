@@ -1,4 +1,6 @@
-import { Query } from "node-appwrite";
+"use server";
+
+import { ID, Query } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { parseStringify } from "../utils";
 
@@ -33,9 +35,31 @@ export const getTransactionsByBankId = async ({
             ],
         };
 
-
         return parseStringify(transactions);
     } catch (error) {
         console.log(error);
+    }
+};
+
+export const createTransaction = async (
+    transactions: CreateTransactionProps
+) => {
+    try {
+        const { database } = await createAdminClient();
+
+        const transaction = await database.createDocument(
+            DATABASE_ID!,
+            TRANSACTION_COLLECTION_ID!,
+            ID.unique(),
+            {
+                channel: "online",
+                category: "transfer",
+                ...transactions,
+            }
+        );
+
+        return parseStringify(transaction);
+    } catch (error) {
+        console.log("Create transaction", error);
     }
 };
